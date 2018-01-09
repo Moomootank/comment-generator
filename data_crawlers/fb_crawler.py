@@ -12,7 +12,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import TimeoutException
 
-from bs4 import BeautifulSoup
+from article_and_comments_crawler import CommentsArticleCrawler
 
 def save_raw_html_files(graph, page_id, num_posts, html_save_loc):
     #Unrelated to project. Saving raw html files for TT's work
@@ -66,6 +66,45 @@ def save_raw_html_files(graph, page_id, num_posts, html_save_loc):
     print ("Number of successful html files downloaded: {n}".format(n = success))
     driver.close()
     return
+
+#=====These are functions that actually matter for the project=====
+
+def crawl_through_month(crawler, year, month, day_start, day_end, post_limit, key_words):
+    '''
+    year: a string with the year (eg. 2017)
+    month: string in the format "01, 02, 12" etc.
+    day_end: int saying the last day you want to get stuff from
+    
+    post_limit: int of maximum posts you want to take per session
+    key_words: key words to filter posts by
+    '''
+    
+    #for now
+    posts = []
+    articles = []
+    comments = []
+    
+    for i in range(day_start, day_end + 1):
+        start_day = "{year}-{month}-{day}".format(year = year, month = month,
+                     day = i)
+        end_day = "{year}-{month}-{day}".format(year = year, month = month,
+                     day = i + 1)
+        
+        print (start_day)
+        print (end_day)
+        
+        post_dict, article_dict, gathered_post_ids = \
+        crawler.find_relevant_fb_posts(key_words, 
+                                       start_day, end_day, post_limit)
+        
+        comments_dict = crawler.collect_comments_for_article(gathered_post_ids, 
+                                                             post_limit)
+        
+        posts.append(post_dict)
+        posts.append(article_dict)
+        posts.append(comments_dict)
+    
+    return posts, articles, comments
     
 if __name__ == "__main__":
     #My apps user-access token. I didn't set the permissions for some of them though. Hope that's fine
@@ -73,24 +112,18 @@ if __name__ == "__main__":
     graph = fb.GraphAPI(token, timeout = 10)
      
     #====Testing to see if this works=====
-    page_id = "thestraitstimes"
-    save_loc = r"D:\Data Science\Projects\commenter_simulator\data_crawlers\saved_html_files\thestraitstimes\st_article_"
-    #save_raw_html_files(graph, page_id, 100, save_loc)
+    page_id = "nytimes"
     
-    page_posts = graph.get_connections(page_id , "posts", limit = 100, since = "2017-12-22", until = "2017-12-23")
-    page_posts_data = page_posts['data']
+    crawler = CommentsArticleCrawler(page_id, token)
+    '''
+    post_dict, article_dict, gathered_post_ids = \
+    crawler.find_relevant_fb_posts(["trump"], "2018-01-01", "2018-01-30", 100)
+    comments_dict = crawler.collect_comments_for_article(gathered_post_ids, 100)
+    '''
     
-    attachments = graph.get_connections(page_posts_data[1]['id'], "attachments")
-    link_in_post = attachments['data'][0]['url']
     
-    driver = webdriver.Firefox() # import os, os.cwd(), put geckodriver in there
-    driver.get(link_in_post)
-    url = driver.current_url
-    driver.close()
-
-    article = newspaper.Article(url, "en")
-    article.download()
-    article.parse()
+    posts, articles, comments = crawl_through_month(crawler, 2018, "01", 1, 9, 
+                                                    100, ["trump"])
     
     
 
