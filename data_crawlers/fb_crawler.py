@@ -69,7 +69,8 @@ def save_raw_html_files(graph, page_id, num_posts, html_save_loc):
 
 #=====These are functions that actually matter for the project=====
 
-def crawl_through_month(crawler, year, month, day_start, day_end, post_limit, key_words):
+def crawl_month_for_articles(crawler, year, month, day_start, day_end, 
+                             post_limit, comment_limit, key_words):
     '''
     year: a string with the year (eg. 2017)
     month: string in the format "01, 02, 12" etc.
@@ -94,7 +95,7 @@ def crawl_through_month(crawler, year, month, day_start, day_end, post_limit, ke
         print (end_day)
         
         post_dict, article_dict, gathered_post_ids = \
-        crawler.find_relevant_fb_posts(key_words, 
+        crawler.find_relevant_fb_articles(key_words, 
                                        start_day, end_day, post_limit)
         
         comments_dict = crawler.collect_comments_for_article(gathered_post_ids, 
@@ -105,6 +106,38 @@ def crawl_through_month(crawler, year, month, day_start, day_end, post_limit, ke
         posts.append(comments_dict)
     
     return posts, articles, comments
+
+def crawl_month_for_posts(crawler, start_dates, end_dates, post_limit, comment_limit):
+    #Crawls through month for post messages and comments (no articles!)
+    '''
+    crawler: The crawler object
+    start_dates: array, each index is the start date of a month you want to look at
+    end_dates: array, each index is the end date of a period. Make sure the indices align with start_dates
+    post_limit: Limit of number of posts per time perido you want to look at
+    comment_limit: Limit of number of comments per post you want to look at
+    '''
+    
+    assert len(start_dates)==len(end_dates), "Lengths of date arrays are not equal"
+    post_array = []
+    comments_array = []
+    
+    for i in range(len(start_dates)):
+        start_date = start_dates[i]
+        end_date = end_dates[i]
+        print ("Gathering for period that starts on: ", start_date)
+        
+        post_dict, gathered_post_ids = crawler.collect_fb_posts(
+                                    start_date, end_date, post_limit)
+        
+        comments_dict = crawler.collect_comments_for_article(gathered_post_ids,
+                                                             comment_limit)
+        
+        post_array.append(post_dict)
+        comments_array.append(comments_dict)
+        
+    return post_array, comments_array
+        
+        
     
 if __name__ == "__main__":
     #My apps user-access token. I didn't set the permissions for some of them though. Hope that's fine
@@ -112,19 +145,15 @@ if __name__ == "__main__":
     graph = fb.GraphAPI(token, timeout = 10)
      
     #====Testing to see if this works=====
-    page_id = "nytimes"
+    page_id = "INSERT PAGE HERE"
     
-    crawler = CommentsArticleCrawler(page_id, token)
-    '''
-    post_dict, article_dict, gathered_post_ids = \
-    crawler.find_relevant_fb_posts(["trump"], "2018-01-01", "2018-01-30", 100)
-    comments_dict = crawler.collect_comments_for_article(gathered_post_ids, 100)
-    '''
+    crawler = CommentsArticleCrawler(page_id, token)    
+    start_dates = ["2017-{mon}-01".format(mon=i) for i in range(1,13)]
+    end_dates = ["2017-{mon}-01".format(mon=i) for i in range(2,13)]
+    end_dates.append("2018-01-01")
     
-    
-    posts, articles, comments = crawl_through_month(crawler, 2018, "01", 1, 9, 
-                                                    100, ["trump"])
-    
+    post_array, comments_array = \
+    crawl_month_for_posts(crawler, start_dates[:3], end_dates[:3], 100, 1000)
     
 
 

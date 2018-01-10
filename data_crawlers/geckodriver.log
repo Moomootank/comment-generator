@@ -10009,21 +10009,19 @@ Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrp
 1515493395127	Marionette	INFO	Listening on port 64569
 1515493395636	Marionette	WARN	TLS certificate errors will be ignored for this session
 1515493395703	Marionette	DEBUG	Register listener.js for window 4294967297
-1515493435791	geckodriver	INFO	geckodriver 0.19.1
-1515493435798	geckodriver	INFO	Listening on 127.0.0.1:64705
-1515493438791	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.YSkiV0SKZIla"
-1515493439190	Marionette	INFO	Enabled via --marionette
+[Parent 16256, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
 Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
-[Parent 15756, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
-1515493440237	Marionette	INFO	Listening on port 64714
-1515493440324	Marionette	WARN	TLS certificate errors will be ignored for this session
-1515493440372	Marionette	DEBUG	Register listener.js for window 4294967297
-[Parent 15756, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
-1515493449787	geckodriver	INFO	geckodriver 0.19.1
-1515493449795	geckodriver	INFO	Listening on 127.0.0.1:64765
-1515493467591	geckodriver	INFO	geckodriver 0.19.1
-1515493467611	geckodriver	INFO	Listening on 127.0.0.1:64823
-1515493470614	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.CgKGkSZgThiW"
+[Child 15516, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 15516, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 10884, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 10884, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[GPU 15624, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+ommand: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.CgKGkSZgThiW"
 1515493471006	Marionette	INFO	Enabled via --marionette
 Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
 [Parent 12696, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
@@ -10721,3 +10719,345 @@ JavaScript warning: https://static01.nyt.com/marketing/assets/optly/scripts/bar1
 JavaScript warning: https://static01.nyt.com/marketing/assets/optly/scripts/bar1/testing/bar1_v3_incurrency.js, line 120: unreachable code after return statement
 JavaScript warning: https://static01.nyt.com/marketing/assets/optly/scripts/bar1/testing/bar1_v3_incurrency.js, line 120: unreachable code after return statement
 1515493772778	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.nytimes.com/2018/01/05/us/politics/clinton-foundation-fbi.html?smid=fb-nytimes&smtyp=cur"
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 12348, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 12348, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 15620, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[GPU 14680, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1515548899186	geckodriver	INFO	geckodriver 0.19.1
+1515548899202	geckodriver	INFO	Listening on 127.0.0.1:50667
+1515548902154	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.794qDD3jXExD"
+1515548902886	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 10300, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515548904535	Marionette	INFO	Listening on port 50679
+1515548905350	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515548905460	Marionette	DEBUG	Register listener.js for window 4294967297
+1515548905505	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 123"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:123 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:138 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:52 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:31 < uninit()@resource://activity-stream/lib/Store.jsm:151 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:266 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4509 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2281 < GeckoDriver.prototype.quit()@driver.js:3307 < despatch()@server.js:553 < execute()@server.js:527 < onPacket/<()@server.js:502 < onPacket()@server.js:501 < _onJSONObjectReady/<()@transport.js:501
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 15324, Chrome_ChildThread] WARNING: pipe error: 232: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 513
+1515548938348	geckodriver	INFO	geckodriver 0.19.1
+1515548938356	geckodriver	INFO	Listening on 127.0.0.1:50756
+1515548941373	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.INHuif3X8mlv"
+1515548942112	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 13376, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 15900, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 15900, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515548943282	Marionette	INFO	Listening on port 50766
+1515548943401	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515548943449	Marionette	DEBUG	Register listener.js for window 4294967297
+1515548944023	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515548944320	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515548944321	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1515548944338	Marionette	DEBUG	Received DOM event "pageshow" for "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.nytimes.com%2F2018%2F01%2F09%2Fclimate%2Ftrump-florida-offshore-drilling.html%3Fsmid%3Dfb-nytimes%26smtyp%3Dcur&h=ATNigskFqlzItUuKBZ9RjO2_b_sxRb6ct_BWZlkjgiPH8hCdVqafw-IqwmYAyebMZE478Gt8ZYiEHYCwdOVnh9hnBgNMFPzBJqU3Pdl7TuLm&s=1&enc=AZOUNp5VcdzFSPK_gVlPiTEB7trQga6Jw8DJzJ2aFHfEuSi16YKzG2w13N2gTkujs1CQYNwV6kjndzGXxe3f0nPWyCcMBIv6XZUADIReHa6VrQ"
+1515548944344	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.nytimes.com%2F2018%2F01%2F09%2Fclimate%2Ftrump-florida-offshore-drilling.html%3Fsmid%3Dfb-nytimes%26smtyp%3Dcur&h=ATNigskFqlzItUuKBZ9RjO2_b_sxRb6ct_BWZlkjgiPH8hCdVqafw-IqwmYAyebMZE478Gt8ZYiEHYCwdOVnh9hnBgNMFPzBJqU3Pdl7TuLm&s=1&enc=AZOUNp5VcdzFSPK_gVlPiTEB7trQga6Jw8DJzJ2aFHfEuSi16YKzG2w13N2gTkujs1CQYNwV6kjndzGXxe3f0nPWyCcMBIv6XZUADIReHa6VrQ"
+1515548944841	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.nytimes.com/2018/01/09/climate/trump-florida-offshore-drilling.html?smid=fb-nytimes&smtyp=cur"
+1515548945503	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967302"
+1515548946878	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967318"
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript warning: https://static01.nyt.com/marketing/assets/optly/scripts/bar1/testing/bar1_v3_incurrency.js, line 120: unreachable code after return statement
+JavaScript warning: https://static01.nyt.com/marketing/assets/optly/scripts/bar1/testing/bar1_v3_incurrency.js, line 120: unreachable code after return statement
+1515548947517	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967329"
+1515548947556	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967321"
+1515548948057	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967339"
+1515548949566	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.nytimes.com/2018/01/09/climate/trump-florida-offshore-drilling.html?smid=fb-nytimes&smtyp=cur"
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PImageBridge::Msg_Update Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+JavaScript error: https://www.googletagmanager.com/gtm.js?id=GTM-WF9QCL2&gtm_auth=28ykelszAvyta5q5YGRVOg&gtm_preview=env-53&gtm_cookies_win=x, line 101: NS_ERROR_NOT_INITIALIZED: 
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PImageBridge::Msg_Update Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 13500, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+JavaScript error: https://www.googletagmanager.com/gtm.js?id=GTM-WF9QCL2&gtm_auth=28ykelszAvyta5q5YGRVOg&gtm_preview=env-53&gtm_cookies_win=x, line 101: NS_ERROR_NOT_INITIALIZED: 
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PImageBridge::Msg_Update Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[GPU 9696, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1515548976672	geckodriver	INFO	geckodriver 0.19.1
+1515548976688	geckodriver	INFO	Listening on 127.0.0.1:50984
+1515548979690	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.QHVAlW0oSGSR"
+1515548980410	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 13460, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 13460, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515548981525	Marionette	INFO	Listening on port 50994
+1515548981731	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515548981779	Marionette	DEBUG	Register listener.js for window 4294967297
+1515548988202	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515548988552	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515548988552	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1515548989011	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.facebook.com/nytimes/videos/1919520494932130/"
+1515548990971	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.facebook.com/nytimes/videos/1919520494932130/"
+1515548999874	Marionette	DEBUG	Received DOM event "beforeunload" for "https://www.facebook.com/nytimes/videos/1919520494932130/"
+1515549000362	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.facebook.com/nytimes/videos/1919520494932130/"
+1515549000407	Marionette	DEBUG	Received DOM event "unload" for "https://www.facebook.com/nytimes/videos/1919520494932130/"
+1515549000712	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967303"
+1515549000712	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967301"
+1515549000876	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.facebook.com/nytimes/videos/1917598745124305/"
+1515549001684	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.facebook.com/nytimes/videos/1917598745124305/"
+1515549004286	Marionette	DEBUG	Received DOM event "beforeunload" for "https://www.facebook.com/nytimes/videos/1917598745124305/"
+1515549004606	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.facebook.com/nytimes/videos/1917598745124305/"
+1515549004636	Marionette	DEBUG	Received DOM event "unload" for "https://www.facebook.com/nytimes/videos/1917598745124305/"
+1515549004808	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967308"
+1515549004809	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967306"
+1515549006828	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.facebook.com/nytimes/videos/10151302960804999/"
+1515549007771	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.facebook.com/nytimes/videos/10151302960804999/"
+1515549009134	Marionette	DEBUG	Received DOM event "beforeunload" for "https://www.facebook.com/nytimes/videos/10151302960804999/"
+1515549009478	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.facebook.com/nytimes/videos/10151302960804999/"
+1515549009554	Marionette	DEBUG	Received DOM event "unload" for "https://www.facebook.com/nytimes/videos/10151302960804999/"
+1515549009829	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967311"
+1515549009844	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.facebook.com/nytimes/videos/1915956345288545/"
+1515549010730	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.facebook.com/nytimes/videos/1915956345288545/"
+1515549012646	Marionette	DEBUG	Received DOM event "beforeunload" for "https://www.facebook.com/nytimes/videos/1915956345288545/"
+1515549012980	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.facebook.com/nytimes/videos/1915956345288545/"
+1515549013013	Marionette	DEBUG	Received DOM event "unload" for "https://www.facebook.com/nytimes/videos/1915956345288545/"
+1515549013228	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967316"
+1515549013228	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967314"
+1515549013247	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.facebook.com/nytimes/videos/1915324602018386/"
+1515549014208	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.facebook.com/nytimes/videos/1915324602018386/"
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 9988, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9988, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 17060, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 13680, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 13680, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[GPU 15988, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1515549381222	geckodriver	INFO	geckodriver 0.19.1
+1515549381222	geckodriver	INFO	Listening on 127.0.0.1:51349
+1515549384215	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.JHYLSSdzSYbj"
+1515549384997	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 9876, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 9876, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549386335	Marionette	INFO	Listening on port 51366
+1515549387378	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515549387425	Marionette	DEBUG	Register listener.js for window 4294967297
+1515549387462	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 123"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:123 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:138 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:52 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:31 < uninit()@resource://activity-stream/lib/Store.jsm:151 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:266 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4509 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2281 < GeckoDriver.prototype.quit()@driver.js:3307 < despatch()@server.js:553 < execute()@server.js:527 < onPacket/<()@server.js:502 < onPacket()@server.js:501 < _onJSONObjectReady/<()@transport.js:501
+1515549413649	geckodriver	INFO	geckodriver 0.19.1
+1515549413649	geckodriver	INFO	Listening on 127.0.0.1:51464
+1515549416667	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.HXGDbfcMK9zE"
+1515549417199	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 16588, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549418507	Marionette	INFO	Listening on port 51474
+1515549418719	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515549418810	Marionette	DEBUG	Register listener.js for window 4294967297
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 16576, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 16188, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549450316	geckodriver	INFO	geckodriver 0.19.1
+1515549450316	geckodriver	INFO	Listening on 127.0.0.1:51518
+1515549453305	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.UIdbI7LI7okc"
+1515549454152	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 4196, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549456111	Marionette	INFO	Listening on port 51526
+1515549456465	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515549456513	Marionette	DEBUG	Register listener.js for window 4294967297
+1515549456548	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 123"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:123 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:138 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:52 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:31 < uninit()@resource://activity-stream/lib/Store.jsm:151 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:266 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4509 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2281 < GeckoDriver.prototype.quit()@driver.js:3307 < despatch()@server.js:553 < execute()@server.js:527 < onPacket/<()@server.js:502 < onPacket()@server.js:501 < _onJSONObjectReady/<()@transport.js:501
+[Parent 4196, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549476347	geckodriver	INFO	geckodriver 0.19.1
+1515549476347	geckodriver	INFO	Listening on 127.0.0.1:51597
+1515549497251	geckodriver	INFO	geckodriver 0.19.1
+1515549497270	geckodriver	INFO	Listening on 127.0.0.1:51610
+1515549500269	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.76ygAjCRZs89"
+1515549501084	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 17116, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 17116, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549502452	Marionette	INFO	Listening on port 51618
+1515549503460	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515549503506	Marionette	DEBUG	Register listener.js for window 4294967297
+1515549523307	geckodriver	INFO	geckodriver 0.19.1
+1515549523307	geckodriver	INFO	Listening on 127.0.0.1:51652
+1515549526380	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.64n7XgElBUf9"
+1515549526887	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 8728, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 1996, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 1996, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549528039	Marionette	INFO	Listening on port 51661
+1515549528401	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515549528451	Marionette	DEBUG	Register listener.js for window 4294967297
+1515549528836	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 123"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:123 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:138 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:52 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:31 < uninit()@resource://activity-stream/lib/Store.jsm:151 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:266 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4509 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2281
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 3948, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 3948, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 6836, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 6836, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[GPU 14284, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1515549560999	geckodriver	INFO	geckodriver 0.19.1
+1515549561015	geckodriver	INFO	Listening on 127.0.0.1:51731
+1515549563992	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.tdSSFYVelVlU"
+1515549564459	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 1812, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 12608, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 12608, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549565549	Marionette	INFO	Listening on port 51741
+1515549566036	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515549566100	Marionette	DEBUG	Register listener.js for window 4294967297
+1515549567345	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515549567683	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515549567683	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1515549567703	Marionette	DEBUG	Received DOM event "pageshow" for "https://l.facebook.com/l.php?u=https%3A%2F%2Fnypost.com%2F2018%2F01%2F06%2Fwere-still-better-off-with-trump-than-clinton%2F&h=ATNwu13lOr6PfxBQ_QZu4cb3afnTigKEGniTZZHup_wyIY2PuW9xcAcRrV6c_h0v2OgAmLnhmFIs9OvB405SL7RYJkJLS1VWAE8phSu9sQDl&s=1&enc=AZMG06IHtf4DSJLLgA3UIwDC3y00tyAtRi--TtwbWGQ0bl8Y0UTfi-y2fCoMk_dJhT_akX1sWXivNTozw9c8WuYoepv6EFILwWmS5qxqi8xeAg"
+1515549567713	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://l.facebook.com/l.php?u=https%3A%2F%2Fnypost.com%2F2018%2F01%2F06%2Fwere-still-better-off-with-trump-than-clinton%2F&h=ATNwu13lOr6PfxBQ_QZu4cb3afnTigKEGniTZZHup_wyIY2PuW9xcAcRrV6c_h0v2OgAmLnhmFIs9OvB405SL7RYJkJLS1VWAE8phSu9sQDl&s=1&enc=AZMG06IHtf4DSJLLgA3UIwDC3y00tyAtRi--TtwbWGQ0bl8Y0UTfi-y2fCoMk_dJhT_akX1sWXivNTozw9c8WuYoepv6EFILwWmS5qxqi8xeAg"
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+JavaScript error: https://s1.wp.com/_static/??-eJzTLy/QTc7PK0nNK9HPLdUtyClNz8wr1k9Myc3M001KLNLPTSwuSS0CsnTzy1KLijJTUosRYnpZxTr6xJtQUpSYnF0M1GSfa2toamBpbG5iamaaBQD/AjBY, line 198: TypeError: event is undefined
+1515549570743	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://nypost.com/2018/01/06/were-still-better-off-with-trump-than-clinton/"
+1515549570758	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967311"
+1515549570803	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967313"
+1515549571168	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967318"
+JavaScript warning: https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js, line 1: Using //@ to indicate sourceMappingURL pragmas is deprecated. Use //# instead
+1515549572731	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967337"
+1515549572731	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967336"
+1515549573880	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967351"
+1515549573880	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967354"
+1515549573880	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967357"
+1515549573880	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967356"
+1515549573881	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967352"
+1515549573881	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967358"
+1515549573882	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967353"
+1515549573882	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967355"
+1515549574417	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967359"
+1515549574426	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967360"
+1515549574429	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967361"
+1515549574429	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967362"
+1515549574892	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967455"
+1515549574907	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967458"
+1515549574999	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967366"
+1515549577613	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967476"
+1515549579230	Marionette	DEBUG	Received DOM event "pageshow" for "https://nypost.com/2018/01/06/were-still-better-off-with-trump-than-clinton/"
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 8040, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549655530	geckodriver	INFO	geckodriver 0.19.1
+1515549655530	geckodriver	INFO	Listening on 127.0.0.1:52221
+1515549658531	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.pRgU4tQQmOwV"
+1515549659155	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 9680, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 16368, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 16368, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515549660260	Marionette	INFO	Listening on port 52231
+1515549660604	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515549660644	Marionette	DEBUG	Register listener.js for window 4294967297
+1515549660676	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 123"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:123 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:138 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:52 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:31 < uninit()@resource://activity-stream/lib/Store.jsm:151 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:266 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4509 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2281 < GeckoDriver.prototype.quit()@driver.js:3307 < despatch()@server.js:553 < execute()@server.js:527 < onPacket/<()@server.js:502 < onPacket()@server.js:501 < _onJSONObjectReady/<()@transport.js:501
+1515549730570	geckodriver	INFO	geckodriver 0.19.1
+1515549730582	geckodriver	INFO	Listening on 127.0.0.1:52261
+1515550213573	geckodriver	INFO	geckodriver 0.19.1
+1515550213591	geckodriver	INFO	Listening on 127.0.0.1:52457
+1515550216605	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.f1orShVria5L"
+1515550217103	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 6312, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 14860, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515550218202	Marionette	INFO	Listening on port 52467
+1515550218670	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515550218731	Marionette	DEBUG	Register listener.js for window 4294967297
+1515550219612	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515550220225	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515550220225	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1515550220247	Marionette	DEBUG	Received DOM event "pageshow" for "https://l.facebook.com/l.php?u=https%3A%2F%2Fdonate.donaldjtrump.com%2Fsustaining-membership-nov-renewal%2F%3Futm_source%3Dfacebook_djt_post%26utm_medium%3Dsocial%26utm_campaign%3D20171130__nov17-eom-sustaining-membership-nov-renewal_djt_tmagac%26utm_content%3Ddjt_direct-ask&h=ATNuyIdB_eTU5Bjq3z2982toLSH0-aGGJk7rrqZRwxpbMuxiZ0lzTq-RgqCqxbBM08oFVwswXFakdLQ0KJqapFbGB08qk5uKDD8cOrT0Rw9x&s=1&enc=AZN2Tn-JY1tTsG7Bm9iT0J8QprtC7A9PNr8NJzqHA2h0ArZQ4Yw9mJZ5wa66f8nbjSWfbknvTEhZEvHOCZIWLYnpUCbkrC_HZ6ea0ZWY_2AYvw"
+1515550220259	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://l.facebook.com/l.php?u=https%3A%2F%2Fdonate.donaldjtrump.com%2Fsustaining-membership-nov-renewal%2F%3Futm_source%3Dfacebook_djt_post%26utm_medium%3Dsocial%26utm_campaign%3D20171130__nov17-eom-sustaining-membership-nov-renewal_djt_tmagac%26utm_content%3Ddjt_direct-ask&h=ATNuyIdB_eTU5Bjq3z2982toLSH0-aGGJk7rrqZRwxpbMuxiZ0lzTq-RgqCqxbBM08oFVwswXFakdLQ0KJqapFbGB08qk5uKDD8cOrT0Rw9x&s=1&enc=AZN2Tn-JY1tTsG7Bm9iT0J8QprtC7A9PNr8NJzqHA2h0ArZQ4Yw9mJZ5wa66f8nbjSWfbknvTEhZEvHOCZIWLYnpUCbkrC_HZ6ea0ZWY_2AYvw"
+1515550224261	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://donate.donaldjtrump.com/sustaining-membership-nov-renewal/?utm_source=facebook_djt_post&utm_medium=social&utm_campaign=20171130__nov17-eom-sustaining-membership-nov-renewal_djt_tmagac&utm_content=djt_direct-ask"
+1515550229828	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967311"
+1515550229830	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967312"
+1515550233326	Marionette	DEBUG	Received DOM event "pageshow" for "https://donate.donaldjtrump.com/sustaining-membership-nov-renewal/?utm_source=facebook_djt_post&utm_medium=social&utm_campaign=20171130__nov17-eom-sustaining-membership-nov-renewal_djt_tmagac&utm_content=djt_direct-ask"
+[Parent 6312, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 6596, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 17256, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[GPU 14820, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1515550235783	geckodriver::marionette	ERROR	Failed to kill browser process
+1515552747960	geckodriver	INFO	geckodriver 0.19.1
+1515552747976	geckodriver	INFO	Listening on 127.0.0.1:52896
+1515552750953	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.jCzjY4Ud7MYz"
+1515552751608	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 15904, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 15904, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515552752874	Marionette	INFO	Listening on port 52906
+1515552752993	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515552753047	Marionette	DEBUG	Register listener.js for window 4294967297
+1515552753640	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1515552754909	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1515552754910	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+1515552755416	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.facebook.com/DonaldTrump/"
+1515552757200	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.facebook.com/DonaldTrump/"
+1515552757756	Marionette	DEBUG	Received DOM event "beforeunload" for "https://www.facebook.com/DonaldTrump/"
+1515552758101	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.facebook.com/DonaldTrump/"
+1515552758252	Marionette	DEBUG	Received DOM event "unload" for "https://www.facebook.com/DonaldTrump/"
+1515552758491	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.facebook.com/DonaldTrump/videos/10158408058910725/"
+1515552758492	Marionette	DEBUG	Received observer notification "outer-window-destroyed" for "4294967301"
+1515552759348	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.facebook.com/DonaldTrump/videos/10158408058910725/"
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 968, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515552769183	geckodriver	INFO	geckodriver 0.19.1
+1515552769199	geckodriver	INFO	Listening on 127.0.0.1:52967
+1515552772175	mozrunner::runner	INFO	Running command: "C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe" "-marionette" "-profile" "C:\\Users\\schia\\AppData\\Local\\Temp\\rust_mozprofile.90JsnLEHO4Wt"
+1515552772814	Marionette	INFO	Enabled via --marionette
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Parent 4716, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 16668, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 16668, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+1515552773936	Marionette	INFO	Listening on port 52976
+1515552774213	Marionette	WARN	TLS certificate errors will be ignored for this session
+1515552774257	Marionette	DEBUG	Register listener.js for window 4294967297
+1515552774919	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 123"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:123 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:138 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:52 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:31 < uninit()@resource://activity-stream/lib/Store.jsm:151 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:266 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///C:/Program%20Files%20(x86)/Mozilla%20Firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4509 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2281
+[Parent 4716, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Parent 4716, Gecko_IOThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 8908, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8908, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[Child 8976, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+[Child 8976, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+Unable to read VR Path Registry from C:\Users\schia\AppData\Local\openvr\openvrpaths.vrpath
+[GPU 12504, Chrome_ChildThread] WARNING: pipe error: 109: file z:/build/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 346
+
+###!!! [Child][MessageChannel::SendAndWait] Error: Channel error: cannot send/recv
+
+1515552789737	geckodriver	INFO	geckodriver 0.19.1
+1515552789744	geckodriver	INFO	Listening on 127.0.0.1:53011
