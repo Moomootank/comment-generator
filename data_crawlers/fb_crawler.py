@@ -5,6 +5,9 @@ Created on Sat Dec 23 18:37:38 2017
 @author: Moomootank
 """
 
+import numpy as np
+import pandas as pd
+
 import facebook as fb
 import urllib.request
 import newspaper
@@ -153,10 +156,16 @@ if __name__ == "__main__":
     end_dates.append("2018-01-01")
     
     post_array, comments_array = \
-    crawl_month_for_posts(crawler, start_dates[:3], end_dates[:3], 100, 1000)
+    crawl_month_for_posts(crawler, start_dates, end_dates, 100, 1000)
     
-
-
     
-
+    post_dfs = [pd.DataFrame.from_dict(i, orient = "index") for i in post_array]
+    comment_dfs = [pd.DataFrame.from_dict(i, orient = "index") for i in comments_array]
     
+    post_df = pd.concat(post_dfs)
+    comment_df = pd.concat(comment_dfs)
+    post_df.columns = ["post_text", "created_time"]
+    comment_df.columns = ["post_id", "comment_text"]
+    
+    #comment_df.to_csv(r"D:\Data Science\Projects\comment_generator\data\raw_data\comments_2017_dt.csv")
+    #post_df.to_csv(r"D:\Data Science\Projects\comment_generator\data\raw_data\posts_2017_dt.csv")
