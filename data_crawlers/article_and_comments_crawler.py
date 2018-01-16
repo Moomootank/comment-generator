@@ -4,6 +4,9 @@ Created on Tue Jan  9 10:36:50 2018
 
 @author: schia
 """
+
+import pandas as pd
+
 import facebook as fb
 import urllib.request
 import newspaper
@@ -22,7 +25,7 @@ class CommentsArticleCrawler():
         self.graph = fb.GraphAPI(token, timeout = 10)
     
     
-    #=====Functions that identify posts to collect data from=====
+    #=====Functions that identify articles to collect data from=====
     def filter_posts(self, key_words, string):
         #HELPER function to identify posts that we are interested in
         '''
@@ -34,7 +37,7 @@ class CommentsArticleCrawler():
         return any(word in string.lower() for word in key_words)
         
     
-    def find_relevant_fb_posts(self, key_words, start_date, end_date, 
+    def find_relevant_fb_articles(self, key_words, start_date, end_date, 
                                article_limit):
         #Function to collect article data
         '''
@@ -111,6 +114,32 @@ class CommentsArticleCrawler():
         driver.quit()
         return post_dict, article_dict, gathered_post_ids
     
+    #=====If we don't care about the linked article, just want all posts, use this:=====
+    def collect_fb_posts(self, start_date, end_date, post_limit):
+        page_posts = self.graph.get_connections(self.page , "posts", 
+                                                limit = post_limit, 
+                                                since = start_date, 
+                                                until = end_date)
+        
+        page_posts_data = page_posts['data']
+        print ("Number of posts: ", len(page_posts_data))
+        gathered_post_ids = []  
+        post_dict = {}
+        
+        for i in range(len(page_posts_data)):
+            try:
+                post = page_posts_data[i]
+                post_id = post['id']
+                
+                post_dict[post_id] = [post['message'], post['created_time']]
+                gathered_post_ids.append(post_id)
+                
+            except KeyError:
+                print ("This post has no message on facebook")
+                continue
+            
+        return post_dict, gathered_post_ids
+    
     #=====Functions that collect comments data=====
     def collect_comments_for_article(self, post_ids, comments_limit):
         
@@ -120,6 +149,7 @@ class CommentsArticleCrawler():
                                                   limit = comments_limit)
             
             comments_data = comments['data']
+            
             for comment in comments_data:
                 '''
                 Would love to have commenter_id as well, but seems
@@ -127,7 +157,8 @@ class CommentsArticleCrawler():
                 '''
                 comment_id = comment['id']
                 comments_dict[comment_id] = [post_id, comment['message']]
-                
+            
+            
         return comments_dict
             
         

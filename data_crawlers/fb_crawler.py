@@ -5,6 +5,9 @@ Created on Sat Dec 23 18:37:38 2017
 @author: Moomootank
 """
 
+import numpy as np
+import pandas as pd
+
 import facebook as fb
 import urllib.request
 import newspaper
@@ -69,7 +72,8 @@ def save_raw_html_files(graph, page_id, num_posts, html_save_loc):
 
 #=====These are functions that actually matter for the project=====
 
-def crawl_through_month(crawler, year, month, day_start, day_end, post_limit, key_words):
+def crawl_month_for_articles(crawler, year, month, day_start, day_end, 
+                             post_limit, comment_limit, key_words):
     '''
     year: a string with the year (eg. 2017)
     month: string in the format "01, 02, 12" etc.
@@ -94,7 +98,7 @@ def crawl_through_month(crawler, year, month, day_start, day_end, post_limit, ke
         print (end_day)
         
         post_dict, article_dict, gathered_post_ids = \
-        crawler.find_relevant_fb_posts(key_words, 
+        crawler.find_relevant_fb_articles(key_words, 
                                        start_day, end_day, post_limit)
         
         comments_dict = crawler.collect_comments_for_article(gathered_post_ids, 
@@ -105,6 +109,38 @@ def crawl_through_month(crawler, year, month, day_start, day_end, post_limit, ke
         posts.append(comments_dict)
     
     return posts, articles, comments
+
+def crawl_month_for_posts(crawler, start_dates, end_dates, post_limit, comment_limit):
+    #Crawls through month for post messages and comments (no articles!)
+    '''
+    crawler: The crawler object
+    start_dates: array, each index is the start date of a month you want to look at
+    end_dates: array, each index is the end date of a period. Make sure the indices align with start_dates
+    post_limit: Limit of number of posts per time perido you want to look at
+    comment_limit: Limit of number of comments per post you want to look at
+    '''
+    
+    assert len(start_dates)==len(end_dates), "Lengths of date arrays are not equal"
+    post_array = []
+    comments_array = []
+    
+    for i in range(len(start_dates)):
+        start_date = start_dates[i]
+        end_date = end_dates[i]
+        print ("Gathering for period that starts on: ", start_date)
+        
+        post_dict, gathered_post_ids = crawler.collect_fb_posts(
+                                    start_date, end_date, post_limit)
+        
+        comments_dict = crawler.collect_comments_for_article(gathered_post_ids,
+                                                             comment_limit)
+        
+        post_array.append(post_dict)
+        comments_array.append(comments_dict)
+        
+    return post_array, comments_array
+        
+        
     
 if __name__ == "__main__":
     #My apps user-access token. I didn't set the permissions for some of them though. Hope that's fine
@@ -112,15 +148,25 @@ if __name__ == "__main__":
     graph = fb.GraphAPI(token, timeout = 10)
      
     #====Testing to see if this works=====
-    page_id = "nytimes"
+    page_id = "INSERT PAGE HERE"
     
+<<<<<<< HEAD
     crawler = CommentsArticleCrawler(page_id, token)
     
     post_dict, article_dict, gathered_post_ids = \
     crawler.find_relevant_fb_posts(["trump"], "2017-11-01", "2017-11-15", 100)
     comments_dict = crawler.collect_comments_for_article(gathered_post_ids, 100)
+=======
+    crawler = CommentsArticleCrawler(page_id, token)    
+    start_dates = ["2017-{mon}-01".format(mon=i) for i in range(1,13)]
+    end_dates = ["2017-{mon}-01".format(mon=i) for i in range(2,13)]
+    end_dates.append("2018-01-01")
+>>>>>>> d3b4b2a7efa3585855f2e37443ba6514df87f0f5
     
+    post_array, comments_array = \
+    crawl_month_for_posts(crawler, start_dates, end_dates, 100, 1000)
     
+<<<<<<< HEAD
     '''
     posts, articles, comments = crawl_through_month(crawler, 2018, "01", 1, 9, 
                                                     100, ["trump"])
@@ -128,6 +174,16 @@ if __name__ == "__main__":
     '''
 
 
+=======
     
-
+    post_dfs = [pd.DataFrame.from_dict(i, orient = "index") for i in post_array]
+    comment_dfs = [pd.DataFrame.from_dict(i, orient = "index") for i in comments_array]
     
+    post_df = pd.concat(post_dfs)
+    comment_df = pd.concat(comment_dfs)
+    post_df.columns = ["post_text", "created_time"]
+    comment_df.columns = ["post_id", "comment_text"]
+>>>>>>> d3b4b2a7efa3585855f2e37443ba6514df87f0f5
+    
+    #comment_df.to_csv(r"D:\Data Science\Projects\comment_generator\data\raw_data\comments_2017_dt.csv")
+    #post_df.to_csv(r"D:\Data Science\Projects\comment_generator\data\raw_data\posts_2017_dt.csv")
