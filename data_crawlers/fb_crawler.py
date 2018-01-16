@@ -108,24 +108,24 @@ def crawl_through_month(crawler, year, month, day_start, day_end, post_limit, ke
     
 if __name__ == "__main__":
     #My apps user-access token. I didn't set the permissions for some of them though. Hope that's fine
-    token = "INSERT TOKEN HERE"
+    token = "EAACVbwskeJEBAJqq0YBZBigWbL4ogo1lTsjw1sSIXypZBMMlRcVNtXHKZBsBnbuBwMs74giHjdrUGONLtuemYjDixDuqrkK1XP4aoNkHZB4QIZCgljpVZBR7blPLv1BcK8H0Y09iw9jHGNq1s8ZCuJ2H1aZAk1kJkZAv6KA5OmKZBNwgZDZD"
     graph = fb.GraphAPI(token, timeout = 10)
      
     #====Testing to see if this works=====
     page_id = "nytimes"
     
     crawler = CommentsArticleCrawler(page_id, token)
-    '''
+    
     post_dict, article_dict, gathered_post_ids = \
-    crawler.find_relevant_fb_posts(["trump"], "2018-01-01", "2018-01-30", 100)
+    crawler.find_relevant_fb_posts(["trump"], "2017-11-01", "2017-11-15", 100)
     comments_dict = crawler.collect_comments_for_article(gathered_post_ids, 100)
+    
+    
     '''
-    
-    
     posts, articles, comments = crawl_through_month(crawler, 2018, "01", 1, 9, 
                                                     100, ["trump"])
     
-    
+    '''
 
 
     
