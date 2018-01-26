@@ -65,12 +65,12 @@ class GeneratorNetwork():
         #Deal with this later
         with tf.name_scope("Data"):
             embedding = tf.nn.embedding_lookup(params = self.pretrained_embeddings, ids = self.input_placeholder)
-        return tf.cast(embedding, dtype = tf.float32)
+        return tf.cast(embedding, dtype = tf.int16) #Int, as it is just returning a one-hot
     
     #=====Functions that run the model=====
     def prediction_op(self):
         init = tf.contrib.layers.xavier_initializer(uniform = True, dtype= tf.float32)
-        x = self.input_placeholder
+        x = self.add_embeddings()
         
         cells = self.add_cells()
         outputs, state = tf.nn.dynamic_rnn(cells, inputs = x, sequence_length = self.input_len_placeholder, dtype = tf.float32)
@@ -83,13 +83,14 @@ class GeneratorNetwork():
         class_weights = tf.get_variable("class_weights", shape = (self.num_hidden_units[-1], self.num_classes))
         class_bias = tf.get_variable("class_bias", initializer = init, shape = (self.num_classes))
         
-        predictions = tf.matmul(outputs, class_weights) + class_bias #[batch_size, max_time, self.num_classes]
+        reshaped_output = tf.reshape(outputs, shape = [-1, self.num_hidden_units[-1]])
+        predictions = tf.matmul(reshaped_output, class_weights) + class_bias #[batch_size * max_time, self.num_classes]
         return predictions
         
     def loss_op(self, predictions):
         with tf.name_scope("loss_ops"):
-            #Think carefully about the loss_op!!!!
-            loss = tf.nn.sparse_softmax_cross_entropy_with_logits(labels = self.labels_placeholder, logits = predictions)
+            labels_reshaped = tf.reshape(self.labels_placeholder, shape = [-1])
+            loss = tf.nn.sparse_softmax_cross_entropy_with_logits(labels = self.labels_reshaped, logits = predictions)
             loss = tf.reduce_mean(loss)
         return loss
     
