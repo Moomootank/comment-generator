@@ -20,6 +20,7 @@ class GeneratorNetwork():
         self.pretrained_embeddings = config.embeddings #Just need to have one copy of all the embeddings
         self.session = sess #tensorflow session
         self.vocab_to_idx = config.vocab_idx_dict
+        self.idx_to_vocab = config.idx_vocab_dict
         self.ending_char = config.ending_char #Char that means sequence has ended
         
         self.num_epochs =  config.num_epochs
@@ -79,7 +80,7 @@ class GeneratorNetwork():
         x = self.add_embeddings()
         
         cells = self.add_cells()
-        outputs, state = tf.nn.dynamic_rnn(cells, inputs = x, sequence_length = self.input_len_placeholder, dtype = tf.float32)
+        outputs = tf.nn.dynamic_rnn(cells, inputs = x, sequence_length = self.input_len_placeholder, dtype = tf.float32)
             
         '''
         outputs: Tensor shaped: [batch_size, max_time, cell.output_size]
@@ -91,7 +92,7 @@ class GeneratorNetwork():
         
         reshaped_output = tf.reshape(outputs, shape = [-1, self.num_hidden_units[-1]])
         predictions = tf.matmul(reshaped_output, class_weights) + class_bias #[batch_size * max_time, self.num_classes]
-        return predictions, state
+        return predictions
         
     def loss_op(self, predictions):
         with tf.name_scope("loss_ops"):
@@ -109,7 +110,7 @@ class GeneratorNetwork():
     def initialize_ops(self):
         self.add_placeholders() # Add the placeholders
         self.pred = self.prediction_op() #Add the prediction op
-        self.loss = self.loss_op(self.pred[0]) #0, as this is a tuple where 1 is state
+        self.loss = self.loss_op(self.pred) 
         self.train = self.training_op(self.loss)
         
     #=====These functions execute the model=====
@@ -212,6 +213,8 @@ class GeneratorNetwork():
         
     #=====These functions generate a new sequence!=====
     def generate_character_sequence(self, prompt, best_model_location, max_chars):
+        assert type(prompt)==str, "Prompt is not a string!"
+        #Not taking in list of strings, as the different lengths of each would make matrix mult difficult anyway
         with tf.Session() as new_sess:
             #Idk, might be better to use new session for predictions rather than the checkpointed one
             saver = tf.train.Saver() #Idk, do we need to initialize variables again? Use the same saver?
@@ -219,18 +222,27 @@ class GeneratorNetwork():
             
             my_prompt = [self.vocab_to_idx[char] for char in prompt]
             chars = my_prompt
-            for current_char in chars:
+            while True:
                 '''
                 Procedure:
-                    1: Take current chars, run the prediction op. This is give you num_char predictions
-                    2: You only care about the LAST prediction/cell state, since that is what you will sue to generate the next one
+                    1: Take current chars, run the prediction op. This gives you num_char predictions
+                    2: You only care about the LAST prediction, since that is what you will use to generate the next ochar
                     3: Take the last prediction, softmax it, find the most likely char
                     4: Append it to the list of chars
                     5: Repeat steps 1-4 until you generate a "terminator" char, then break (or until certain limit is reached)
                 '''
+                if (len(chars)>=max_chars) or (chars[-1] == self.ending_char):
+                    break
+                             
+                feed = self.create_feed_dict(np.array(chars), None, [0]*self.num_layers, len(chars)) 
+                predictions = new_sess.run(self.prediction_op(), feed_dict = feed)
+                next_char_preds = predictions[-1]
+                assert len(next_char_preds)==1, "Some issues with dimensions; not predicting just last char"
                 
+                pred_char_index = tf.argmax(tf.nn.softmax(next_char_preds))
+                next_char = self.idx_to_vocab[pred_char_index]
+                chars.append(next_char)
             
-            
-    
+            return " ".join(chars)
     
     #=====These functions are used to validate the hyperparameters=====
