@@ -22,6 +22,7 @@ class GeneratorNetwork():
         self.vocab_to_idx = config.vocab_idx_dict
         self.idx_to_vocab = config.idx_vocab_dict
         self.ending_char = config.ending_char #Char that means sequence has ended
+        self.max_time = config.max_time
         
         self.num_epochs =  config.num_epochs
         self.learning_rate = config.learning_rate
@@ -80,11 +81,13 @@ class GeneratorNetwork():
         x = self.add_embeddings()
         
         cells = self.add_cells()
-        outputs = tf.nn.dynamic_rnn(cells, inputs = x, sequence_length = self.input_len_placeholder, dtype = tf.float32)
+        outputs, states = tf.nn.dynamic_rnn(cells, inputs = x, sequence_length = self.input_len_placeholder, dtype = tf.float32)
             
         '''
         outputs: Tensor shaped: [batch_size, max_time, cell.output_size]
         cell.output_size == self.num_hidden_units[-1] (hopefully lol)
+        For each row, after the seq_len for it, the output is just 0
+        Softmax of all 0: each value is just 1/num_classes
         '''
         #class_weights: going to be the hidden size of the last layer, and num_classes = cell.output_size
         class_weights = tf.get_variable("class_weights", shape = (self.num_hidden_units[-1], self.num_classes))
@@ -98,8 +101,19 @@ class GeneratorNetwork():
         with tf.name_scope("loss_ops"):
             labels_reshaped = tf.reshape(self.labels_placeholder, shape = [-1]) #1d array of batch_Size* max_time
             loss = tf.nn.sparse_softmax_cross_entropy_with_logits(labels = labels_reshaped, logits = predictions)
-            loss = tf.reduce_mean(loss)
-        return loss
+            #loss should be tensor of batch_size*max_time now, with each entry being the cross_entropy loss
+            
+            length_mask = tf.sequence_mask(self.input_len_placeholder, maxlen = self.max_time, dtype = tf.float32)
+            #this should generate boolean array of [batch_size, max_time]
+            length_mask = tf.reshape(length_mask, shape = [-1]) #1d array of batch_Size* max_time
+            
+            masked_loss = tf.multiply(loss, length_mask) 
+            #element wise multiplication; loss of superfluous elements becomes 0
+            masked_loss = tf.reduce_sum(masked_loss) #Summing loss all up; should not include superfluous loss now 
+            correct_length = tf.reduce_sum(length_mask) #number of actual elements
+            masked_loss = masked_loss/correct_length
+           
+            return masked_loss
     
     def training_op(self, loss):
         with tf.name_scope("optimizer"):
