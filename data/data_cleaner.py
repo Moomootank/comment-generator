@@ -8,6 +8,7 @@ Cleans data for feeding into the generator
 """
 import numpy as np
 import pandas as pd
+import pickle
 
 #=====Functions that tease out attributes of the data=====
 
@@ -31,6 +32,10 @@ def find_all_unique_characters(df, column):
     character_counts = pd.Series(list(all_text)).value_counts()
     
     return character_counts
+
+def save_obj(obj, location):
+    with open(location, 'wb') as file:
+        pickle.dump(obj, file)
 
 #=====Functions that change attributes of the data=====
 
@@ -152,6 +157,14 @@ if __name__ == "__main__":
     SEQ_LEN = 350 #maximum sequence length 
     indices, str_lengths = map_characters_to_indices(clean_comments, "cleaned_text", char_idx_dict,
                                                         SEQ_LEN, END_TOKEN)
+    
+    save_obj(char_idx_dict, r"data_for_gen_model/max_len_350/char_idx_dict.pickle")
+    save_obj(idx_char_dict, r"data_for_gen_model/max_len_350/idx_char_dict.pickle")
+    save_obj(char_array, r"data_for_gen_model/max_len_350/char_embeddings_df.pickle")
+    save_obj(indices, r"data_for_gen_model/max_len_350/comment_indices_350.pickle")
+    save_obj(str_lengths, r"data_for_gen_model/max_len_350/str_lengths_350.pickle")
+    
+    
     
     
     

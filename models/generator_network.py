@@ -13,7 +13,7 @@ import math
 class GeneratorNetwork():
     #=====Functions that set up the parameters of the network=====
     def __init__(self, sess, config):
-        self.num_features = config.embed_size 
+        #self.num_features = config.embed_size 
         self.num_classes = config.num_classes
         self.num_batches = config.batch_size #Number of batches you want
         
@@ -208,7 +208,7 @@ class GeneratorNetwork():
         for epoch in range(self.num_epochs):
             average_loss = self.run_epoch(self.session, data, labels)
             losses.append(average_loss) #Tracking loss per epoch
-            
+            '''
             if epoch%10==0 or epoch==self.num_epochs-1:
                 #This block checks to see when the best epoch is
                 val_loss = self.predict_other(self.session, other_data, other_labels)
@@ -218,7 +218,7 @@ class GeneratorNetwork():
                     best_loss = val_loss    
                     saver.save(self.session, self.log_location)
                     print ("New best model saved. Epoch:", epoch)
-            
+            '''
             if epoch % 50 ==0 or epoch==self.num_epochs-1: #-1 due to characteristics of range
             #This if block just prints out the progress and time taken to reach a certain stage
                 previous = self.track_time(start, previous, average_loss, epoch) #Set the new "last checkpoint" to this one
