@@ -44,7 +44,7 @@ def create_comment_generator_dict():
     params_dict['ending_char'] = "~" #Char that means sequence has ended
     params_dict['max_time'] = 350
         
-    params_dict['num_epochs'] = 100
+    params_dict['num_epochs'] = 10
     params_dict['learning_rate'] = 1e-4
     params_dict['num_layers'] = 2
     params_dict['log_location']  = r"/max_len_350_saved/log_location" #Where you want to save the intermediate models
@@ -54,7 +54,7 @@ def create_comment_generator_dict():
 
 #=====Functions that train the model=====
 
-def train_model(train_indices, train_labels, other_indices, other_labels, model, **params):
+def train_model(train_indices, train_labels, other_indices, other_labels, model, params):
     '''
     Function that trains a tensorflow model with the desired parameters, then checks loss on validation/test set
     
@@ -69,11 +69,11 @@ def train_model(train_indices, train_labels, other_indices, other_labels, model,
         
         model.initialize_ops()
         variables_init = tf.global_variables_initializer()
-        sess = tf.Session() # Not using "with tf.Session() as sess" as that would close the session outside of the indent      
-        sess.run(variables_init)
+        #sess = tf.Session() # Not using "with tf.Session() as sess" as that would close the session outside of the indent      
+        model.session.run(variables_init)
         saver = tf.train.Saver()
         
-        losses = model.fit(sess, train_indices, train_labels, other_indices, other_labels, saver)
+        losses = model.fit(train_indices, train_labels, None, None, saver)
         sns.tsplot(losses)
         plt.show()
         plt.clf()
@@ -81,7 +81,7 @@ def train_model(train_indices, train_labels, other_indices, other_labels, model,
         
         #saver.restore(sess, "training_logs/checkpoints/current_best.ckpt") #Restore the best model 
 
-        return graph, sess, model
+        return graph, model
 
 if __name__ == "__main__":
     params_dict = create_comment_generator_dict()
@@ -89,4 +89,15 @@ if __name__ == "__main__":
     
     session = tf.Session()
     comment_generator = GeneratorNetwork(session, config_obj)
+    
+    nndict = {'n_hidden_units': [140, 180], 
+              'n_dropout' : [0.3, 0.4]}
+    
+    input_data_url = "../data/data_for_gen_model/max_len_350/comment_indices_350.pickle"
+    train_indices = load_obj(input_data_url)
+    
+    train_labels = train_indices[:, 1:]
+    last_col = np.full((train_labels.shape[0],1), 54)
+    train_labels = np.concatenate([train_labels, last_col], axis = 1)
+    graph, model = train_model(train_indices, train_labels, np.zeros(350), np.zeros(350), comment_generator, nndict)
     

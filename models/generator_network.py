@@ -30,17 +30,17 @@ class GeneratorNetwork():
         self.log_location = config.log_location #Where you want to save the intermediate models
         self.checkpoint_location = config.chkpt #Where you want to save checkpoints
         
-    def define_network_hyperparams(self, n_hidden_units, n_dropout, n_input_dropout):
+    def define_network_hyperparams(self, n_hidden_units, n_dropout):
         #Placed in another function instead of init to allow for easier
         #parameter optimization
         self.num_hidden_units = n_hidden_units
         self.num_dropout = n_dropout
-        self.num_input_dropout = n_input_dropout
+        #self.num_input_dropout = n_input_dropout
     
     #=====Functions that set up the basic structure of the network, such as data=====
     def add_placeholders(self):
         with tf.name_scope("Data"):
-            self.input_placeholder = tf.placeholder(dtype= tf.float32, shape = (None, self.num_features))
+            self.input_placeholder = tf.placeholder(dtype= tf.float32, shape = (None, self.max_time))
             self.labels_placeholder = tf.placeholder(dtype= tf.int32, shape = (None))
             self.input_len_placeholder = tf.placeholder(dtype = tf.int16, shape = (None))
             #Need dropout to be in placeholder format to make it easier to turn it off during prediction
