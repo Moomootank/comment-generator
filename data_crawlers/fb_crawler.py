@@ -144,37 +144,32 @@ def crawl_month_for_posts(crawler, start_dates, end_dates, post_limit, comment_l
     
 if __name__ == "__main__":
     #My apps user-access token. I didn't set the permissions for some of them though. Hope that's fine
-    token = "EAACVbwskeJEBAJqq0YBZBigWbL4ogo1lTsjw1sSIXypZBMMlRcVNtXHKZBsBnbuBwMs74giHjdrUGONLtuemYjDixDuqrkK1XP4aoNkHZB4QIZCgljpVZBR7blPLv1BcK8H0Y09iw9jHGNq1s8ZCuJ2H1aZAk1kJkZAv6KA5OmKZBNwgZDZD"
+    token = "FILL TOKEN IN HERE"
     graph = fb.GraphAPI(token, timeout = 10)
      
     #====Testing to see if this works=====
     page_id = "INSERT PAGE HERE"
     
-<<<<<<< HEAD
     crawler = CommentsArticleCrawler(page_id, token)
     
     post_dict, article_dict, gathered_post_ids = \
     crawler.find_relevant_fb_posts(["trump"], "2017-11-01", "2017-11-15", 100)
     comments_dict = crawler.collect_comments_for_article(gathered_post_ids, 100)
-=======
+
     crawler = CommentsArticleCrawler(page_id, token)    
     start_dates = ["2017-{mon}-01".format(mon=i) for i in range(1,13)]
     end_dates = ["2017-{mon}-01".format(mon=i) for i in range(2,13)]
     end_dates.append("2018-01-01")
->>>>>>> d3b4b2a7efa3585855f2e37443ba6514df87f0f5
     
     post_array, comments_array = \
     crawl_month_for_posts(crawler, start_dates, end_dates, 100, 1000)
-    
-<<<<<<< HEAD
+
     '''
     posts, articles, comments = crawl_through_month(crawler, 2018, "01", 1, 9, 
                                                     100, ["trump"])
     
     '''
 
-
-=======
     
     post_dfs = [pd.DataFrame.from_dict(i, orient = "index") for i in post_array]
     comment_dfs = [pd.DataFrame.from_dict(i, orient = "index") for i in comments_array]
@@ -183,7 +178,6 @@ if __name__ == "__main__":
     comment_df = pd.concat(comment_dfs)
     post_df.columns = ["post_text", "created_time"]
     comment_df.columns = ["post_id", "comment_text"]
->>>>>>> d3b4b2a7efa3585855f2e37443ba6514df87f0f5
     
     #comment_df.to_csv(r"D:\Data Science\Projects\comment_generator\data\raw_data\comments_2017_dt.csv")
     #post_df.to_csv(r"D:\Data Science\Projects\comment_generator\data\raw_data\posts_2017_dt.csv")
