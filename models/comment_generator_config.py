@@ -10,7 +10,7 @@ class CommentGeneratorConfig():
         #Params dict is a dictionary with all the necessary parameters
         #self.embed_size = params_dict['embed_size']
         self.num_classes = params_dict['num_classes']
-        self.batch_size  = params_dict['batch_size']
+        self.num_batches  = params_dict['num_batches']
         
         self.embeddings = params_dict['embeddings'] #Just need to have one copy of all the embeddings
         self.vocab_idx_dict = params_dict['vocab_idx_dict']

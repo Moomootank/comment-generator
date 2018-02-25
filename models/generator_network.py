@@ -15,7 +15,7 @@ class GeneratorNetwork():
     def __init__(self, sess, config):
         #self.num_features = config.embed_size 
         self.num_classes = config.num_classes
-        self.num_batches = config.batch_size #Number of batches you want
+        self.num_batches = config.num_batches #Number of batches you want
         
         self.pretrained_embeddings = config.embeddings #Just need to have one copy of all the embeddings
         self.session = sess #tensorflow session
@@ -40,9 +40,9 @@ class GeneratorNetwork():
     #=====Functions that set up the basic structure of the network, such as data=====
     def add_placeholders(self):
         with tf.name_scope("Data"):
-            self.input_placeholder = tf.placeholder(dtype= tf.float32, shape = (None, self.max_time))
+            self.input_placeholder = tf.placeholder(dtype= tf.int32, shape = (None, None))
             self.labels_placeholder = tf.placeholder(dtype= tf.int32, shape = (None))
-            self.input_len_placeholder = tf.placeholder(dtype = tf.int16, shape = (None))
+            self.input_len_placeholder = tf.placeholder(dtype = tf.int32, shape = (None))
             #Need dropout to be in placeholder format to make it easier to turn it off during prediction
             self.dropout_placeholder = tf.placeholder(dtype = tf.float32, shape = (self.num_layers)) 
             self.input_dropout_placeholder = tf.placeholder(dtype = tf.float32, shape = (self.num_layers))
@@ -61,7 +61,7 @@ class GeneratorNetwork():
         init = tf.contrib.layers.xavier_initializer(uniform = True, dtype= tf.float32)
         
         for i in range(self.num_layers):
-            without_dropout = tf.contrib.rnn.LSTMCell(self.num_hidden_units[i], activation = tf.relu, initializer = init)
+            without_dropout = tf.contrib.rnn.LSTMCell(self.num_hidden_units[i], activation = tf.nn.tanh, initializer = init)
             one_layer = tf.contrib.rnn.DropoutWrapper(without_dropout, 
                                                       output_keep_prob = 1 - self.dropout_placeholder[i])
             forward_cells.append(one_layer)
@@ -73,7 +73,7 @@ class GeneratorNetwork():
         #Deal with this later
         with tf.name_scope("Data"):
             embedding = tf.nn.embedding_lookup(params = self.pretrained_embeddings, ids = self.input_placeholder)
-        return tf.cast(embedding, dtype = tf.int16) #Int, as it is just returning a one-hot
+        return tf.cast(embedding, dtype = tf.float32) #Int, as it is just returning a one-hot
     
     #=====Functions that make up the heart of the model=====
     def prediction_op(self):
@@ -81,7 +81,8 @@ class GeneratorNetwork():
         x = self.add_embeddings()
         
         cells = self.add_cells()
-        outputs, states = tf.nn.dynamic_rnn(cells, inputs = x, sequence_length = self.input_len_placeholder, dtype = tf.float32)
+        outputs, states = tf.nn.dynamic_rnn(cells, inputs = x, sequence_length = self.input_len_placeholder
+                                            , dtype = tf.float32)
             
         '''
         outputs: Tensor shaped: [batch_size, max_time, cell.output_size]
@@ -90,7 +91,7 @@ class GeneratorNetwork():
         Softmax of all 0: each value is just 1/num_classes
         '''
         #class_weights: going to be the hidden size of the last layer, and num_classes = cell.output_size
-        class_weights = tf.get_variable("class_weights", shape = (self.num_hidden_units[-1], self.num_classes))
+        class_weights = tf.get_variable("class_weights", initializer = init, shape = (self.num_hidden_units[-1], self.num_classes))
         class_bias = tf.get_variable("class_bias", initializer = init, shape = (self.num_classes))
         
         reshaped_output = tf.reshape(outputs, shape = [-1, self.num_hidden_units[-1]])
@@ -117,8 +118,9 @@ class GeneratorNetwork():
     
     def training_op(self, loss):
         with tf.name_scope("optimizer"):
-            optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate)
-            train_op = optimizer.minimize(loss)      
+            optimizer = tf.train.AdamOptimizer(learning_rate=self.learning_rate, epsilon = 1e-6)
+            train_op = optimizer.minimize(loss)
+            
         return train_op
     
     def initialize_ops(self):
@@ -131,7 +133,7 @@ class GeneratorNetwork():
     
     #===== The following functions execute the model =====
     
-    def get_minibatches(self, data, labels, num_batches):
+    def get_minibatches(self, data, labels, lens, num_batches):
         '''
         Helper function that returns a list of tuples of batch_size sized inputs and labels
         Return n_samples/batch size number of batches
@@ -150,21 +152,23 @@ class GeneratorNetwork():
         p = np.random.permutation(data_length)
         reshuffled_data = data[p]
         reshuffled_labels = labels[p] #These create copies of the array, so the original copies are untouched
-        
+        reshuffled_lengths = lens[p]
         batches = []         
-        b_size = int(len(data)/num_batches) 
-        
+        b_size = math.ceil(len(data)/num_batches) 
+
         for i in range(num_batches):
             start = i*b_size
-            if i!= (num_batches - 1):
-                data_sample = reshuffled_data[start:(start + b_size)] # Sample of b size
-                labels_sample = reshuffled_labels[start:(start + b_size)]
-                batches.append((data_sample, labels_sample))
-            else:
-                #If last batch, make sure you get the leftovers
-                data_sample = reshuffled_data[start:]
-                labels_sample = reshuffled_labels[start:]
-                batches.append((data_sample, labels_sample))
+            if start>=data_length:
+                print ("Start exceeds max_length!")
+                break
+            end = start + b_size
+            if end>=data_length:
+                end = data_length
+            
+            data_sample = reshuffled_data[start:end] # Sample of b size
+            labels_sample = reshuffled_labels[start: end]
+            lens_sample = reshuffled_lengths[start: end]
+            batches.append((data_sample, labels_sample, lens_sample))
                 
         return batches
     
@@ -185,17 +189,40 @@ class GeneratorNetwork():
         
         return current_time
         
-    def run_epoch(self, session, data, labels):
+    def run_epoch(self, session, data, labels, lens):
         n_minibatches, total_loss = 0, 0
-        for input_batch, labels_batch in self.get_minibatches(data, labels, self.batch_size):
-            feed = self.create_feed_dict(input_batch, labels_batch, self.num_dropout, self.num_input_dropout)
+        for input_batch, labels_batch, len_batch in self.get_minibatches(data, labels, lens, self.num_batches):
+            feed = self.create_feed_dict(input_batch, labels_batch, self.num_dropout, len_batch)
             _ , batch_loss = session.run([self.train, self.loss], feed_dict = feed) #self.loss will not run two times. This just fetches the value
+            #print ("Batch loss is:", batch_loss)
             n_minibatches += 1
             total_loss += batch_loss
+            
+            if batch_loss>10:
+                for v in tf.trainable_variables():
+                    print (v.name)
+                    print (session.run(v))
+                    print (input_batch)
+                    print (batch_loss)
+                    print ("=========")
+            elif math.isnan(batch_loss):
+                for v in tf.trainable_variables():
+                    print (batch_loss)
+                    print (v.name)
+                    print (session.run(v))
+                    print (input_batch.shape)
+                    print (labels_batch.shape)
+                    print (len_batch.shape)
+                    print ("Minibatch number:", n_minibatches)
+                    print ("=========")
+                    return 0
+                    
+                    
+        print ("Total loss is:", total_loss)
         epoch_average_loss = total_loss/n_minibatches
         return epoch_average_loss
     
-    def fit(self, data, labels, other_data, other_labels, saver):
+    def fit(self, data, labels, lens, other_data, other_labels, other_lens, saver):
         #data, labels: training data and labels
         #other_data, other_labels: the validation/test data and labels
         
@@ -206,7 +233,7 @@ class GeneratorNetwork():
         best_loss = 100 # Initial val score
         val_losses = [best_loss]
         for epoch in range(self.num_epochs):
-            average_loss = self.run_epoch(self.session, data, labels)
+            average_loss = self.run_epoch(self.session, data, labels, lens)
             losses.append(average_loss) #Tracking loss per epoch
             '''
             if epoch%10==0 or epoch==self.num_epochs-1:
@@ -219,44 +246,58 @@ class GeneratorNetwork():
                     saver.save(self.session, self.log_location)
                     print ("New best model saved. Epoch:", epoch)
             '''
-            if epoch % 50 ==0 or epoch==self.num_epochs-1: #-1 due to characteristics of range
+            if epoch % 1 ==0 or epoch==self.num_epochs-1: #-1 due to characteristics of range
             #This if block just prints out the progress and time taken to reach a certain stage
                 previous = self.track_time(start, previous, average_loss, epoch) #Set the new "last checkpoint" to this one
                 
         return losses, val_losses #Can try to plot how much the loss has gone down
         
     #=====These functions generate a new sequence!=====
-    def generate_character_sequence(self, prompt, best_model_location, max_chars):
+    def generate_character_sequence(self, prompt, best_model_location, max_chars, top_char_num):
         assert type(prompt)==str, "Prompt is not a string!"
+        prompt = prompt.lower()
         #Not taking in list of strings, as the different lengths of each would make matrix mult difficult anyway
-        with tf.Session() as new_sess:
-            #Idk, might be better to use new session for predictions rather than the checkpointed one
-            saver = tf.train.Saver() #Idk, do we need to initialize variables again? Use the same saver?
-            saver.restore(new_sess, best_model_location)
+        #with self.session as new_sess:
+        #Idk, might be better to use new session for predictions rather than the checkpointed one
+        #saver = tf.train.Saver() #Idk, do we need to initialize variables again? Use the same saver?
+        #saver.restore(self.session, best_model_location)
+        
+        my_prompt = [self.vocab_to_idx[char] for char in prompt]
+        chars = my_prompt
+        end_index = self.vocab_to_idx[self.ending_char]
+        
+        while True:
+            '''
+            Procedure:
+                1: Take current chars, run the prediction op. This gives you num_char predictions
+                2: You only care about the LAST prediction, since that is what you will use to generate the next ochar
+                3: Take the last prediction, softmax it, find the most likely char
+                4: Append it to the list of chars
+                5: Repeat steps 1-4 until you generate a "terminator" char, then break (or until certain limit is reached)
+            '''
+            if (len(chars)>=max_chars) or (chars[-1] == end_index):
+                break
             
-            my_prompt = [self.vocab_to_idx[char] for char in prompt]
-            chars = my_prompt
-            while True:
-                '''
-                Procedure:
-                    1: Take current chars, run the prediction op. This gives you num_char predictions
-                    2: You only care about the LAST prediction, since that is what you will use to generate the next ochar
-                    3: Take the last prediction, softmax it, find the most likely char
-                    4: Append it to the list of chars
-                    5: Repeat steps 1-4 until you generate a "terminator" char, then break (or until certain limit is reached)
-                '''
-                if (len(chars)>=max_chars) or (chars[-1] == self.ending_char):
-                    break
-                             
-                feed = self.create_feed_dict(np.array(chars), None, [0]*self.num_layers, len(chars)) 
-                predictions = new_sess.run(self.prediction_op(), feed_dict = feed)
-                next_char_preds = predictions[-1]
-                assert len(next_char_preds)==1, "Some issues with dimensions; not predicting just last char"
-                
-                pred_char_index = tf.argmax(tf.nn.softmax(next_char_preds))
-                next_char = self.idx_to_vocab[pred_char_index]
-                chars.append(next_char)
+            #Just feed something random as labels batch             
+            feed = self.create_feed_dict(np.array([chars]), np.array(chars), [0]*self.num_layers, len(chars)) 
+            predictions = self.session.run(self.pred, feed_dict = feed)
+            next_char_preds = predictions[-1]
             
-            return " ".join(chars)
+            #pred_char_index = self.session.run(tf.argmax(tf.nn.softmax(next_char_preds)))
+            values, indices = tf.nn.top_k(next_char_preds, k = top_char_num)
+            prob_distribution = tf.nn.softmax(values)
+            
+            prob_distribution, indices = self.session.run([prob_distribution, indices])
+            print ("Prob dist is", prob_distribution)
+            print ("Indices are:", indices)
+            pred_char_index = np.random.choice(indices, 
+                                                p = prob_distribution)
+            print ("Pred char index is:", pred_char_index)
+            chars.append(pred_char_index)
+
+        words = [self.idx_to_vocab[index] for index in chars]
+        generated_comment = "".join(words)
+        print (generated_comment)
+        return generated_comment
     
     #=====These functions are used to validate the hyperparameters=====
