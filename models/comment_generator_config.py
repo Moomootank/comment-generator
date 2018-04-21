@@ -24,3 +24,9 @@ class CommentGeneratorConfig():
         self.log_location = params_dict['log_location'] #Where you want to save the intermediate models
         self.chkpt = params_dict['chkpt'] #Where you want to save checkpoints
         
+        #Additional seqseq params
+        keys = list(params_dict.keys())
+        if "starting_char" in keys:
+            self.starting_char = params_dict["starting_char"]
+        if "num_enc_layers" in keys:
+            self.num_enc_layers = params_dict["num_enc_layers"]
